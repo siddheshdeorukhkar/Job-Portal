@@ -1,6 +1,13 @@
 package com.example.jobPortal.jobApp.Job;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="job_table")
 public class Job {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
     private String title;
     private  String description;

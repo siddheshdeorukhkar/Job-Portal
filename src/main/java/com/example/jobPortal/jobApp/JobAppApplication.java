@@ -15,11 +15,5 @@ public class JobAppApplication {
 		SpringApplication.run(JobAppApplication.class, args);
 	}
 
-//	@Bean
-//	public CommandLineRunner initialCreate(){
-//		return (args)->{
-//			Job j1 = new Job(1L, "SDE1", "sftwr engg", "100K", "200k", "Remote");
-//		};
-//	}
 
 }
