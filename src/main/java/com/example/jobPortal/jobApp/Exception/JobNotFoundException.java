@@ -1,4 +1,4 @@
-package com.example.jobPortal.jobApp.Job.Exception;
+package com.example.jobPortal.jobApp.Exception;
 
 public class JobNotFoundException extends RuntimeException{
     public JobNotFoundException(String message){

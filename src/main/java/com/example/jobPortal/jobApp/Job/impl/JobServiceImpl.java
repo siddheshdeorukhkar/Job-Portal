@@ -3,7 +3,7 @@ package com.example.jobPortal.jobApp.Job.impl;
 import com.example.jobPortal.jobApp.Job.Job;
 import com.example.jobPortal.jobApp.Job.JobRepository;
 import com.example.jobPortal.jobApp.Job.JobService;
-import com.example.jobPortal.jobApp.Job.Exception.JobNotFoundException;
+import com.example.jobPortal.jobApp.Exception.JobNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -66,11 +66,18 @@ public class JobServiceImpl implements JobService {
 //            }
 //        }
 //        return false;
-        try{
+//        try{
+//            jobRepository.deleteById(id);
+//            return true;
+//        }
+//        catch (Exception e){
+//            return false;
+//        }
+        if (jobRepository.existsById(id)){
             jobRepository.deleteById(id);
             return true;
         }
-        catch (Exception e){
+        else{
             return false;
         }
 

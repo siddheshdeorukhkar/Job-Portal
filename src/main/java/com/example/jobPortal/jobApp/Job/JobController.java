@@ -1,5 +1,6 @@
 package com.example.jobPortal.jobApp.Job;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.batch.BatchProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @RestController
 public class JobController {
+
     private JobService jobService;
 
     public JobController(JobService jobService) {
@@ -26,9 +28,13 @@ public class JobController {
 //        return jobs;
 //    }
 
+//    @GetMapping("/jobs")
+//    public ResponseEntity<List<Job>>findAll(){
+//        return ResponseEntity.ok(jobService.findAll());
+//    }
     @GetMapping("/jobs")
-    public ResponseEntity<List<Job>>findAll(){
-        return ResponseEntity.ok(jobService.findAll());
+    public List<Job>findAll(){
+        return jobService.findAll();
     }
 
 //    @GetMapping("/jobs/{id}")
