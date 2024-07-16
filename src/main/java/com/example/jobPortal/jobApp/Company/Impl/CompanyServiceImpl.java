@@ -3,6 +3,8 @@ package com.example.jobPortal.jobApp.Company.Impl;
 import com.example.jobPortal.jobApp.Company.Company;
 import com.example.jobPortal.jobApp.Company.CompanyRepository;
 import com.example.jobPortal.jobApp.Company.CompanyService;
+import com.example.jobPortal.jobApp.Exception.CompanyNotFoundException;
+import com.example.jobPortal.jobApp.Job.Job;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -46,5 +48,10 @@ public class CompanyServiceImpl implements CompanyService {
         else {
             return false;
         }
+    }
+
+    @Override
+    public Company findCompanyById(Long id) {
+        return companyRepository.findById(id).orElseThrow(()-> new CompanyNotFoundException("Company with ID " + id + " not found"));
     }
 }

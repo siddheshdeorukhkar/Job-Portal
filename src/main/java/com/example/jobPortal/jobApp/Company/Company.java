@@ -1,6 +1,8 @@
 package com.example.jobPortal.jobApp.Company;
 
 import com.example.jobPortal.jobApp.Job.Job;
+import com.example.jobPortal.jobApp.Reviews.Review;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -12,21 +14,32 @@ public class Company {
     private Long id;
     private String name;
     private String description;
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name="company_id")
+    private List<Job>jobs;
+
+    //@JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name ="company_id")
+    private List<Review> reviews;
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public Company() {
+    }
 
     public Company(Long id, String name, String description, List<Job> jobs) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.jobs = jobs;
-    }
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="company_id")
-    private List<Job>jobs;
-
-//    private List<Review> reviews;
-
-    public Company() {
     }
 
     public Long getId() {
@@ -60,4 +73,5 @@ public class Company {
     public void setJobs(List<Job> jobs) {
         this.jobs = jobs;
     }
+
 }
